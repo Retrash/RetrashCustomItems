@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C3B4BC0D-4CC2-4E20-ABDC-D76DEF15072D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Blunderbeast</RootNamespace>
+    <AssemblyName>Blunderbeast</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BarrierAmmolet.cs" />
+    <Compile Include="Guns\Infinigun.cs" />
+    <Compile Include="Guns\GrenadeOnAStick.cs" />
+    <Compile Include="FragGrenade.cs" />
+    <Compile Include="ItemAPI\AdvancedDualWieldSynergyProcessor.cs" />
+    <Compile Include="Setup\ShopTool.cs" />
+    <Compile Include="BrittleArmor.cs" />
+    <Compile Include="NOU.cs" />
+    <Compile Include="Synergies\SynergyFormInitialiser.cs" />
+    <Compile Include="Synergies\SynergySetup.cs" />
+    <Compile Include="Synergies\CustomSynergies.cs" />
+    <Compile Include="ItemAPI\Tools.cs" />
+    <Compile Include="TrapCard.cs" />
+    <Compile Include="BigRedButtonGag.cs" />
+    <Compile Include="DisciplineRing.cs" />
+    <Compile Include="Guns\RageRifle.cs" />
+    <Compile Include="Guns\GravityDisc.cs" />
+    <Compile Include="Guns\Artemis.cs" />
+    <Compile Include="Guns\Alchemiser.cs" />
+    <Compile Include="Guns\Craftsman.cs" />
+    <Compile Include="Guns\Leafblower.cs" />
+    <Compile Include="InfinityGuontletPassive.cs" />
+    <Compile Include="CounterfeitCrown.cs" />
+    <Compile Include="CrystalBall.cs" />
+    <Compile Include="Guns\OrnatePistol.cs" />
+    <Compile Include="LootBox.cs" />
+    <Compile Include="MaledictionRounds.cs" />
+    <Compile Include="Invoker.cs" />
+    <Compile Include="MindControlDevice.cs" />
+    <Compile Include="MatryoshkaChest.cs" />
+    <Compile Include="Blunderbeastblight.cs" />
+    <Compile Include="Beastbloodinjection.cs" />
+    <Compile Include="Boombox.cs" />
+    <Compile Include="Challengerbelt.cs" />
+    <Compile Include="Roshambo.cs" />
+    <Compile Include="LockBullets.cs" />
+    <Compile Include="Components\ChaosRaccoonManager.cs" />
+    <Compile Include="Ouroboros.cs" />
+    <Compile Include="Raccoon.cs" />
+    <Compile Include="Components\Smallbloodthirst.cs" />
+    <Compile Include="CrackedEgg.cs" />
+    <Compile Include="BlankSpellbook.cs" />
+    <Compile Include="SharpGuon.cs" />
+    <Compile Include="IcySkull.cs" />
+    <Compile Include="RepositoryDamned.cs" />
+    <Compile Include="UnlockedBullets.cs" />
+    <Compile Include="WarVase.cs" />
+    <Compile Include="WishCoupon.cs" />
+    <Compile Include="GravityGlove.cs" />
+    <Compile Include="TwinPins.cs" />
+    <Compile Include="TinyBullets.cs" />
+    <Compile Include="BarrelCharger.cs" />
+    <Compile Include="Dodgicitering.cs" />
+    <Compile Include="Recycloader.cs" />
+    <Compile Include="Heartshield.cs" />
+    <Compile Include="Glasssmelter.cs" />
+    <Compile Include="Tabletechstealth.cs" />
+    <Compile Include="Vampirecloak.cs" />
+    <Compile Include="Panacea.cs" />
+    <Compile Include="ItemAPI\FakePrefab.cs" />
+    <Compile Include="ItemAPI\FakePrefabHooks.cs" />
+    <Compile Include="ItemAPI\ItemBuilder.cs" />
+    <Compile Include="Setup\CustomItems.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ItemAPI\ResourceExtractor.cs" />
+    <Compile Include="ItemAPI\SpriteBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Beastblood-injection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\panacea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\tabletechstealth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\vampirecloak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\glasssmelter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\heartshield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\dodgicite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\recycloader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\boombox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\challengerbelt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\raccoon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\lockedbullets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\matryoshkachest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\crackedegg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\barrelcharger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ouroboros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\twinbadges-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>D:\coding\Dependencies\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp.Base.mm">
+      <HintPath>D:\coding\Dependencies\Assembly-CSharp.Base.mm.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>D:\coding\Dependencies\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>D:\coding\Dependencies\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>D:\coding\Dependencies\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\maledictionrounds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\spellbook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\crystalball.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\counterfeitcrown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\infinityguontlet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bigredbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\disciplinering.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\mindcontroldevice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\invoker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\tinybullets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\blunderbeast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\lootbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\roshambo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\warvase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\unlockedbullets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\gravityglove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\trapcard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\barrierammolet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NOU.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\sharpguon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\sharpguon-orbital.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\brittlearmor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\sparegrenade2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\iceskull3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\wishcharm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\damnedrepository.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
