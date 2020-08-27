@@ -48,9 +48,10 @@ namespace Blunderbeast
         {
             if (!this.m_pickedUpThisRun)
             {
+                base.Pickup(player);
                 AkSoundEngine.PostEvent("Play_ENM_creecher_peel_01", base.gameObject);
                 float curHealth = player.healthHaver.GetCurrentHealth();
-                player.healthHaver.ForceSetCurrentHealth(curHealth - 1);
+                player.healthHaver.ForceSetCurrentHealth(curHealth - 1);   
                 
                 PickupObject pickupObject = this.Open(player);
                 Gun gun = pickupObject as Gun;
@@ -61,7 +62,10 @@ namespace Blunderbeast
                 Array.Resize<StatModifier>(ref gun.passiveStatModifiers, gun.passiveStatModifiers.Length + 1);
                 gun.passiveStatModifiers[gun.passiveStatModifiers.Length - 1] = statModifier;
             }
-            base.Pickup(player);
+            else
+            {
+                base.Pickup(player);
+            }           
         }
 
         private Gun lastGun;

@@ -52,6 +52,7 @@ namespace Blunderbeast
 
             //SETS PROJECTILE STATS
             NewProjectileInf.baseData.damage = 3f;
+            NewProjectileInf.baseData.range *= 1.35f;
             NewProjectileInf.AdditionalScaleMultiplier = 1.2f;
         }
 

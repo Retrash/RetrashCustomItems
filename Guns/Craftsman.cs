@@ -35,7 +35,7 @@ namespace Blunderbeast
             gun.damageModifier = 1;
             gun.reloadTime = 1.4f;
             gun.barrelOffset.transform.localPosition += new Vector3(0.2f, 0.2f, 0);
-            gun.DefaultModule.cooldownTime = 0.3f;
+            gun.DefaultModule.cooldownTime = 0.45f;
             gun.DefaultModule.numberOfShotsInClip = 15;
             gun.DefaultModule.angleVariance = 4f;
             gun.quality = PickupObject.ItemQuality.A;
