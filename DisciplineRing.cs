@@ -29,7 +29,7 @@ namespace Blunderbeast
 
             //Ammonomicon entry variables
             string shortDesc = "Don't Be Hasty";
-            string longDesc = "Adds bonus damage for each room cleared without dodge rolling. Removes one instance of bonus damage each time its wearer dodge rolls.\n\n" +
+            string longDesc = "Adds bonus damage for each room cleared without dodge rolling. Removes one instance of bonus damage each time its wearer dodge rolls in combat.\n\n" +
                 "Ring worn only by the most devoted Gun Cultists who have defeated the urge of dodge rolling recklessly.";
 
             //Adds the item to the gungeon item list, the ammonomicon, the loot table, etc.
@@ -93,10 +93,11 @@ namespace Blunderbeast
             {
                 if (NoDodge == true)
                 {
-                    if (disciplineLevel < 40)
+                    AkSoundEngine.PostEvent("Play_OBJ_metronome_jingle_01", this.gameObject);
+
+                    if (disciplineLevel < 20)
                     {
                         disciplineLevel += 1;
-                        AkSoundEngine.PostEvent("Play_OBJ_metronome_jingle_01", this.gameObject);
                         StatModifier statModifier = new StatModifier();
                         statModifier.statToBoost = PlayerStats.StatType.Damage;
                         statModifier.amount = 0.05f;
@@ -131,7 +132,7 @@ namespace Blunderbeast
 
         private void DodgeFail(PlayerController player)
         {
-            if (disciplineLevel >= 1)
+            if (disciplineLevel >= 1 && player.IsInCombat)
             {
                 disciplineLevel -= 1;
                 AkSoundEngine.PostEvent("Play_OBJ_metronome_fail_01", this.gameObject);

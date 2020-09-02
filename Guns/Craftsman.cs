@@ -93,8 +93,7 @@ namespace Blunderbeast
         public override void PostProcessProjectile(Projectile projectile)
         {
             PlayerController playerController = this.gun.CurrentOwner as PlayerController;
-            bool flag = playerController == null;
-            if (flag)
+            if (playerController == null)
             {
                 this.gun.ammo = this.gun.GetBaseMaxAmmo();
             }
@@ -121,11 +120,10 @@ namespace Blunderbeast
             if (!arg2.aiActor.healthHaver.IsDead)
             {
                 PlayerController player = gun.CurrentOwner as PlayerController;
-                if (player.HasPickupID(131) || player.HasPickupID(239) || player.HasPickupID(815))
+                if ((player.HasPickupID(131) || player.HasPickupID(239) || player.HasPickupID(815)) || (gun.DuctTapeMergedGunIDs != null))
                 {
                     float value2 = UnityEngine.Random.Range(0.0f, 1.0f);
-                    bool flag2 = value2 <= 0.06;
-                    if (flag2 && armorCount < 10)
+                    if (value2 <= 0.06 && armorCount < 10)
                     {
                         GameManager.Instance.StartCoroutine(this.Clang());
                         LootEngine.SpawnItem(PickupObjectDatabase.GetById(120).gameObject, arg2.sprite.WorldBottomCenter, Vector2.up, 1f, true, false, true);
@@ -134,8 +132,7 @@ namespace Blunderbeast
                 }
 
                 float value = UnityEngine.Random.Range(0.0f, 1.0f);
-                bool flag = value <= 0.06;
-                if (flag)
+                if (value <= 0.06)
                 {
                     GameManager.Instance.StartCoroutine(this.Clang());
 
@@ -161,8 +158,7 @@ namespace Blunderbeast
 
                 else
                 {
-                    bool flag2 = value <= 0.12;
-                    if (flag2)
+                    if (value <= 0.12)
                     {
                         GameManager.Instance.StartCoroutine(this.Clang());
 
@@ -181,8 +177,7 @@ namespace Blunderbeast
 
                     else
                     {
-                        bool flag3 = value <= 0.18;
-                        if (flag3)
+                        if (value <= 0.18)
                         {
                             GameManager.Instance.StartCoroutine(this.Clang());
 

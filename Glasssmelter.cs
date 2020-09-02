@@ -125,7 +125,7 @@ namespace Blunderbeast
                             else
                             {
                                 bool Bottle = value <= 0.925;
-                                if (Bottle)
+                                if (Bottle && !player.HasPickupID(558))
                                 {
                                     //BOTTLE
                                     AkSoundEngine.PostEvent("Play_OBJ_ironcoin_wish_01", base.gameObject);
@@ -137,7 +137,7 @@ namespace Blunderbeast
                                 else
                                 {
                                     bool Flask = value <= 0.9375;
-                                    if (Flask)
+                                    if (Flask && !player.HasPickupID(267))
                                     {
                                         //KNIGHT FLASK
                                         AkSoundEngine.PostEvent("Play_OBJ_ironcoin_wish_01", base.gameObject);
@@ -149,7 +149,7 @@ namespace Blunderbeast
                                     else
                                     {
                                         bool Cannon = value <= 0.95;
-                                        if (Cannon)
+                                        if (Cannon && !player.HasPickupID(540))
                                         {
                                             //GLASS CANNON
                                             AkSoundEngine.PostEvent("Play_OBJ_ironcoin_wish_01", base.gameObject);
@@ -250,7 +250,7 @@ namespace Blunderbeast
                             else
                             {
                                 bool Bottle = value <= 0.94;
-                                if (Bottle)
+                                if (Bottle && !player.HasPickupID(558))
                                 {
                                     //BOTTLE
                                     AkSoundEngine.PostEvent("Play_OBJ_ironcoin_wish_01", base.gameObject);
@@ -262,7 +262,7 @@ namespace Blunderbeast
                                 else
                                 {
                                     bool Flask = value <= 0.96;
-                                    if (Flask)
+                                    if (Flask && !player.HasPickupID(267))
                                     {
                                         //KNIGHT FLASK
                                         AkSoundEngine.PostEvent("Play_OBJ_ironcoin_wish_01", base.gameObject);
@@ -274,7 +274,7 @@ namespace Blunderbeast
                                     else
                                     {
                                         bool Cannon = value <= 0.98;
-                                        if (Cannon)
+                                        if (Cannon && !player.HasPickupID(540))
                                         {
                                             //GLASS CANNON
                                             AkSoundEngine.PostEvent("Play_OBJ_ironcoin_wish_01", base.gameObject);

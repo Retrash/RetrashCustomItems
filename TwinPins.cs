@@ -67,8 +67,7 @@ namespace Blunderbeast
             if (base.Owner.HasPickupID(148))
             {
                 float value = UnityEngine.Random.Range(0.0f, 1.0f);
-                bool flag = value < 0.5;
-                if (flag)
+                if (value < 0.5)
                 {
                     LootEngine.GivePrefabToPlayer(PickupObjectDatabase.GetById(127).gameObject, player);
                 }

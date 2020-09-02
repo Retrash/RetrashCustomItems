@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using ItemAPI;
 using Dungeonator;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Blunderbeast
 {
@@ -27,7 +29,7 @@ namespace Blunderbeast
 
             //Ammonomicon entry variables
             string shortDesc = "Trial of the Gun";
-            string longDesc = "Grants powerful benefits but activates Challenge Mode. Breaks when removed. \n\n" +
+            string longDesc = "Grants powerful benefits but activates Challenge Mode. Breaks if removed. \n\n" +
                 "This belt was awarded to the first Gungeoneers who dared brave the trials of the Icosahedrax.";
 
             //Adds the item to the gungeon item list, the ammonomicon, the loot table, etc.
@@ -46,10 +48,16 @@ namespace Blunderbeast
 
         private static int challengeLevel = 0;
 
-
         public override void Pickup(PlayerController player)
         {
+            if (!this.m_pickedUpThisRun && player.characterIdentity == PlayableCharacters.Robot)
+            {
+                player.healthHaver.Armor += 1f;
+            }
+
             base.Pickup(player);
+            DisableCap();
+            player.OnEnteredCombat += DisableCap;           
             GameManager.Instance.OnNewLevelFullyLoaded += this.ChestReward;
             ChallengeManager instance = ChallengeManager.Instance;
             if (ChallengeManager.Instance == false)
@@ -72,12 +80,13 @@ namespace Blunderbeast
                 challengeLevel = 0;
                 ChallengeManager.ChallengeModeType = ChallengeModeType.None;
             }
-
         }
 
         public override DebrisObject Drop(PlayerController player)
         {
             DebrisObject debrisObject = base.Drop(player);
+            player.OnEnteredCombat -= DisableCap;
+            DisableCap();
             Challengerbelt component = debrisObject.GetComponent<Challengerbelt>();
             component.Break();
             return debrisObject;
@@ -123,6 +132,58 @@ namespace Blunderbeast
             GameUIRoot.Instance.notificationController.DoCustomNotification(header, text, notificationObjectSprite.Collection, notificationObjectSprite.spriteId, UINotificationController.NotificationColor.GOLD, false, true);
         }
 
+        private void DisableCap()
+        {
+            if (Owner)
+            {
+                foreach (AIActor aiactor in StaticReferenceManager.AllEnemies)
+                {
+                    HealthHaver healthHaver = aiactor.healthHaver;
+                    if (healthHaver != null && healthHaver.IsBoss)
+                    {
+                        this.bossData.Add(new Challengerbelt.Tuple<HealthHaver, float, float>(healthHaver, (float)Challengerbelt.m_damageCap.GetValue(healthHaver), (float)Challengerbelt.m_bossDpsCap.GetValue(healthHaver)));
+                        Challengerbelt.m_damageCap.SetValue(healthHaver, -1f);
+                        Challengerbelt.m_bossDpsCap.SetValue(healthHaver, -1f);
+                    }
+                }
+            }
+
+            else
+            {
+                foreach (Challengerbelt.Tuple<HealthHaver, float, float> tuple in this.bossData)
+                {
+                    HealthHaver x = tuple.x;
+                    float y = tuple.y;
+                    float z = tuple.z;
+                    Challengerbelt.m_damageCap.SetValue(x, y);
+                    Challengerbelt.m_bossDpsCap.SetValue(x, z);
+                }
+                this.bossData.Clear();
+            }
+        }
+
+        private List<Challengerbelt.Tuple<HealthHaver, float, float>> bossData = new List<Challengerbelt.Tuple<HealthHaver, float, float>>();
+
+        private static FieldInfo m_damageCap = typeof(HealthHaver).GetField("m_damageCap", BindingFlags.Instance | BindingFlags.NonPublic);
+
+        private static FieldInfo m_bossDpsCap = typeof(HealthHaver).GetField("m_bossDpsCap", BindingFlags.Instance | BindingFlags.NonPublic);
+
+        public class Tuple<X, Y, Z>
+        {
+
+            public Tuple(X x, Y y, Z z)
+            {
+                this.x = x;
+                this.y = y;
+                this.z = z;
+            }
+
+            public X x;
+
+            public Y y;
+
+            public Z z;
+        }
     }
 }
 

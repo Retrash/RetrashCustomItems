@@ -95,8 +95,7 @@ namespace Blunderbeast
             if (player.HasPickupID(277))
             {
                 float value = UnityEngine.Random.Range(0.0f, 1.0f);
-                bool flag = value < 0.2;
-                if (flag)
+                if (value < 0.2)
                 {
                     sourceProjectile.AdditionalScaleMultiplier *= 0.5f;
                     sourceProjectile.baseData.damage *= 0.8f;
@@ -106,8 +105,7 @@ namespace Blunderbeast
                 else
                 {
 
-                    bool flag2 = value < 0.4;
-                    if (flag2)
+                    if (value < 0.4)
                     {
                         sourceProjectile.AdditionalScaleMultiplier *= 0.75f;
                         sourceProjectile.baseData.damage *= 0.9f;
@@ -117,8 +115,7 @@ namespace Blunderbeast
                     else
                     {
 
-                        bool flag3 = value < 0.6;
-                        if (flag3)
+                        if (value < 0.6)
                         {
                             sourceProjectile.AdditionalScaleMultiplier *= 1f;
                             sourceProjectile.baseData.damage *= 1f;
@@ -128,8 +125,7 @@ namespace Blunderbeast
                         else
                         {
 
-                            bool flag4 = value < 0.8;
-                            if (flag4)
+                            if (value < 0.8)
                             {
                                 sourceProjectile.AdditionalScaleMultiplier *= 1.5f;
                                 sourceProjectile.baseData.damage *= 1.1f;

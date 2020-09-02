@@ -64,8 +64,7 @@ namespace Blunderbeast
             string text;
             string header;
             float value = UnityEngine.Random.Range(0.0f, 1.3f);
-            bool flag = value < 0.1;
-            if (flag)
+            if (value < 0.1)
             {
                 AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                 AkSoundEngine.PostEvent("Play_MUS_RatPunch_Theme_03", base.gameObject);
@@ -76,8 +75,7 @@ namespace Blunderbeast
             }
             else
             {
-                bool flag2 = value < 0.2;
-                if (flag2)
+                if (value < 0.2)
                 {
                     AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                     AkSoundEngine.PostEvent("Play_MUS_Anthem_Winner_Short_01", base.gameObject);
@@ -87,8 +85,7 @@ namespace Blunderbeast
                 }
                 else
                 {
-                    bool flag3 = value < 0.3;
-                    if (flag3)
+                    if (value < 0.3)
                     {
                         AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                         AkSoundEngine.PostEvent("Play_MUS_Lich_Double_01", base.gameObject);
@@ -98,8 +95,7 @@ namespace Blunderbeast
                     }
                     else
                     {
-                        bool flag4 = value < 0.4;
-                        if (flag4)
+                        if (value < 0.4)
                         {
                             AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                             AkSoundEngine.PostEvent("Play_MUS_Anthem", base.gameObject);
@@ -109,8 +105,7 @@ namespace Blunderbeast
                         }
                         else
                         {
-                            bool flag5 = value < 0.5;
-                            if (flag5)
+                            if (value < 0.5)
                             {
                                 AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                                 AkSoundEngine.PostEvent("Play_MUS_Sewer_Theme_01", base.gameObject);
@@ -120,8 +115,7 @@ namespace Blunderbeast
                             }
                             else
                             {
-                                bool flag6 = value < 0.6;
-                                if (flag6)
+                                if (value < 0.6)
                                 {
                                     AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                                     AkSoundEngine.PostEvent("Play_MUS_Catacombs_Theme_01", base.gameObject);
@@ -131,8 +125,7 @@ namespace Blunderbeast
                                 }
                                 else
                                 {
-                                    bool flag7 = value < 0.7;
-                                    if (flag7)
+                                    if (value < 0.7)
                                     {
                                         AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                                         AkSoundEngine.PostEvent("Play_MUS_Office_Theme_01", base.gameObject);
@@ -142,8 +135,7 @@ namespace Blunderbeast
                                     }
                                     else
                                     {
-                                        bool flag8 = value < 0.8;
-                                        if (flag8)
+                                        if (value < 0.8)
                                         {
                                             AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                                             AkSoundEngine.PostEvent("Play_MUS_Cathedral_Theme_01", base.gameObject);
@@ -153,8 +145,7 @@ namespace Blunderbeast
                                         }
                                         else
                                         {
-                                            bool flag9 = value < 0.9;
-                                            if (flag9)
+                                            if (value < 0.9)
                                             {
                                                 AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                                                 AkSoundEngine.PostEvent("Play_MUS_Forge_Theme_01", base.gameObject);
@@ -164,8 +155,7 @@ namespace Blunderbeast
                                             }
                                             else
                                             {
-                                                bool flag10 = value < 1;
-                                                if (flag10)
+                                                if (value < 1)
                                                 {
                                                     AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                                                     AkSoundEngine.PostEvent("Play_MUS_Space_Theme_01", base.gameObject);
@@ -175,8 +165,7 @@ namespace Blunderbeast
                                                 }
                                                 else
                                                 {
-                                                    bool flag11 = value < 1.1;
-                                                    if (flag11)
+                                                    if (value < 1.1)
                                                     {
                                                         AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                                                         AkSoundEngine.PostEvent("Play_MUS_BulletHell_Theme_01", base.gameObject);
@@ -186,8 +175,7 @@ namespace Blunderbeast
                                                     }
                                                     else
                                                     {
-                                                        bool flag12 = value < 1.2;
-                                                        if (flag12)
+                                                        if (value < 1.2)
                                                         {
                                                             AkSoundEngine.PostEvent("Stop_MUS_All", base.gameObject);
                                                             AkSoundEngine.PostEvent("Play_MUS_Mines_Theme_01", base.gameObject);

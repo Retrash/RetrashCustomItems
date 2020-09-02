@@ -92,7 +92,7 @@ namespace Blunderbeast
         {
             PlayerController player = this.Owner;
             yield return new WaitForSeconds(0.15f);
-            if (!player.inventory.AllGuns.Contains(PickupObjectDatabase.GetByName("Hyper Disc") as Gun))
+            if (!player.inventory.AllGuns.Contains(PickupObjectDatabase.GetByName("Hyper Disc") as Gun) && player.CurrentGun != (PickupObjectDatabase.GetByName("Hyper Disc") as Gun))
             {
                 player.inventory.AddGunToInventory(PickupObjectDatabase.GetByEncounterName("Hyper Disc") as Gun, true);
             }
