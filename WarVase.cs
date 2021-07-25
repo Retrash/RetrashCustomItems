@@ -134,24 +134,6 @@ namespace Blunderbeast
                         AIActor nearestEnemy = this.GetNearestEnemy(activeEnemies, mb.sprite.WorldCenter, out num, null);
                         if (nearestEnemy && nearestEnemy != null)
                         {
-                            if (player.HasPickupID(7))
-                            {
-                                Vector2 unitCenter = mb.sprite.WorldCenter;
-                                Vector2 unitCenter2 = nearestEnemy.specRigidbody.HitboxPixelCollider.UnitCenter;
-                                float z = BraveMathCollege.Atan2Degrees((unitCenter2 - unitCenter).normalized);
-                                Projectile projectile = ((Gun)ETGMod.Databases.Items[7]).DefaultModule.projectiles[0];
-                                GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, mb.sprite.WorldCenter, Quaternion.Euler(0f, 0f, z), true);
-                                Projectile component = gameObject.GetComponent<Projectile>();
-                                bool flag11 = component != null;
-                                if (flag11)
-                                {
-                                    component.Owner = player;
-                                    component.baseData.range *= 5f;
-                                    component.baseData.damage *= 0.5f;
-                                    component.pierceMinorBreakables = true;
-                                    component.collidesWithPlayer = false;
-                                }
-                            }
 
                             if (player.HasPickupID(152) && player.CurrentGun.PickupObjectId == 152)
                             {
@@ -166,19 +148,35 @@ namespace Blunderbeast
                                 {
                                     component.Owner = player;
                                     component.baseData.range *= 5f;
-                                    component.baseData.damage *= 0.5f;
                                     component.pierceMinorBreakables = true;
                                     component.collidesWithPlayer = false;
                                 }
                             }
 
-
-                            else
+                            if (player.HasPickupID(7))
                             {
                                 Vector2 unitCenter = mb.sprite.WorldCenter;
                                 Vector2 unitCenter2 = nearestEnemy.specRigidbody.HitboxPixelCollider.UnitCenter;
                                 float z = BraveMathCollege.Atan2Degrees((unitCenter2 - unitCenter).normalized);
-                                Projectile projectile = ((Gun)ETGMod.Databases.Items[43]).DefaultModule.projectiles[0];
+                                Projectile projectile = ((Gun)ETGMod.Databases.Items[7]).DefaultModule.projectiles[0];
+                                GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, mb.sprite.WorldCenter, Quaternion.Euler(0f, 0f, z), true);
+                                Projectile component = gameObject.GetComponent<Projectile>();
+                                bool flag11 = component != null;
+                                if (flag11)
+                                {
+                                    component.Owner = player;
+                                    component.baseData.range *= 5f;
+                                    component.pierceMinorBreakables = true;
+                                    component.collidesWithPlayer = false;
+                                }
+                            }
+
+                            else if (!player.HasPickupID(7) && !player.HasPickupID(152))
+                            {
+                                Vector2 unitCenter = mb.sprite.WorldCenter;
+                                Vector2 unitCenter2 = nearestEnemy.specRigidbody.HitboxPixelCollider.UnitCenter;
+                                float z = BraveMathCollege.Atan2Degrees((unitCenter2 - unitCenter).normalized);
+                                Projectile projectile = ((Gun)ETGMod.Databases.Items[15]).DefaultModule.projectiles[0];
                                 GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, mb.sprite.WorldCenter, Quaternion.Euler(0f, 0f, z), true);
                                 Projectile component = gameObject.GetComponent<Projectile>();
                                 bool flag11 = component != null;

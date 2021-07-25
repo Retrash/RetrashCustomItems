@@ -33,7 +33,7 @@ namespace Blunderbeast
             ItemBuilder.SetupItem(item, shortDesc, longDesc, "rtr");
 
             //Set the cooldown type and duration of the cooldown
-            ItemBuilder.SetCooldownType(item, ItemBuilder.CooldownType.Damage, 900f);
+            ItemBuilder.SetCooldownType(item, ItemBuilder.CooldownType.Damage, 1100f);
 
             //Adds a passive modifier, like curse, coolness, damage, etc. to the item. Works for passives and actives.
 

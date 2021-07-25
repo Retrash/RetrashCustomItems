@@ -23,14 +23,14 @@ namespace Blunderbeast
             Gun targetGun = PickupObjectDatabase.GetById(339) as Gun;
             Gun targetGun2 = PickupObjectDatabase.GetById(620) as Gun;
             gun.AddProjectileModuleFrom("klobb", true, false);
-            gun.SetBaseMaxAmmo(500);
+            gun.SetBaseMaxAmmo(600);
 
             gun.DefaultModule.customAmmoType = targetGun.DefaultModule.customAmmoType;
             gun.DefaultModule.ammoType = targetGun.DefaultModule.ammoType;
             gun.DefaultModule.ammoCost = 1;
             gun.DefaultModule.shootStyle = ProjectileModule.ShootStyle.Automatic;
             gun.damageModifier = 1;
-            gun.reloadTime = 2f;
+            gun.reloadTime = 1.7f;
             gun.barrelOffset.transform.localPosition += new Vector3(0.2f, -0.1f, 0);
             gun.DefaultModule.cooldownTime = 0.07f;
             gun.DefaultModule.numberOfShotsInClip = 100;
@@ -43,6 +43,9 @@ namespace Blunderbeast
             gun.muzzleFlashEffects = component.muzzleFlashEffects;
             ETGMod.Databases.Items.Add(gun, null, "ANY");
 
+            LeafblowerID = gun.PickupObjectId;
+
+
             //CREATES NEW PROJECTILE
             Projectile NewProjectileLeaf = Instantiate<Projectile>(targetGun2.DefaultModule.chargeProjectiles[0].Projectile);
             NewProjectileLeaf.gameObject.SetActive(false);
@@ -54,6 +57,8 @@ namespace Blunderbeast
             //SETS PROJECTILE STATS
             NewProjectileLeaf.AdditionalScaleMultiplier *= 1.1f;
         }
+
+        public static int LeafblowerID;
 
         private bool HasReloaded;
 

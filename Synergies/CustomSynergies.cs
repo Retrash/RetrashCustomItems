@@ -449,8 +449,18 @@ namespace Blunderbeast
                 this.MandatoryItemIDs = new List<int>
                 {
                     ETGMod.Databases.Items["Trap Card"].PickupObjectId,
-                    423
+
                 };
+
+                this.OptionalItemIDs = new List<int>
+                {
+                    421,
+                    422,
+                    423,
+                    424,
+                    425,
+                };
+
                 this.IgnoreLichEyeBullets = true;
                 this.statModifiers = new List<StatModifier>(0);
                 this.bonusSynergies = new List<CustomSynergyType>();
@@ -488,9 +498,11 @@ namespace Blunderbeast
                 {
                     ETGMod.Databases.Items["Gravity Glove"].PickupObjectId
                 };
-                this.MandatoryGunIDs = new List<int>
+                this.OptionalGunIDs = new List<int>
                 {
-                    519
+                    519,
+                    169,
+                    597
                 };
 
                 this.IgnoreLichEyeBullets = true;
@@ -563,7 +575,14 @@ namespace Blunderbeast
                 this.MandatoryItemIDs = new List<int>
                 {
                     ETGMod.Databases.Items["Invoker"].PickupObjectId,
-                    489
+
+                };
+
+                this.OptionalItemIDs = new List<int>
+                {
+                    489,
+                    528,
+                    198
                 };
 
                 this.IgnoreLichEyeBullets = true;
@@ -571,6 +590,25 @@ namespace Blunderbeast
                 this.bonusSynergies = new List<CustomSynergyType>();
             }
         }
+
+        public class IceAgeSynergy : AdvancedSynergyEntry
+        {
+            public IceAgeSynergy()
+            {
+                this.NameKey = "Ice Age";
+                this.MandatoryItemIDs = new List<int>
+                {
+                    ETGMod.Databases.Items["Invoker"].PickupObjectId,
+                    ETGMod.Databases.Items["Icy Skull"].PickupObjectId
+
+                };
+
+                this.IgnoreLichEyeBullets = true;
+                this.statModifiers = new List<StatModifier>(0);
+                this.bonusSynergies = new List<CustomSynergyType>();
+            }
+        }
+
 
         public class GoldenRatioSynergy : AdvancedSynergyEntry
         {
@@ -734,6 +772,29 @@ namespace Blunderbeast
             }
         }
 
+        public class RocketPitchSynergy : AdvancedSynergyEntry
+        {
+            public RocketPitchSynergy()
+            {
+                this.NameKey = "Rocket Pitch";
+                this.MandatoryItemIDs = new List<int>
+                {
+                    ETGMod.Databases.Items["Frag Grenade"].PickupObjectId
+                };
+
+                this.OptionalItemIDs = new List<int>
+                {
+                    39,
+                    398
+                };
+
+                this.IgnoreLichEyeBullets = true;
+                this.statModifiers = new List<StatModifier>(0);
+                this.bonusSynergies = new List<CustomSynergyType>();
+            }
+        }
+
+
         public class FreezePlusSynergy : AdvancedSynergyEntry
         {
             public FreezePlusSynergy()
@@ -856,11 +917,79 @@ namespace Blunderbeast
                 this.statModifiers = new List<StatModifier>(0);
                 this.bonusSynergies = new List<CustomSynergyType>();
             }
-
         }
 
+        public class DendrologySynergy : AdvancedSynergyEntry
+        {
+            public DendrologySynergy()
+            {
+                this.NameKey = "Dendrology";
+                this.MandatoryGunIDs = new List<int>
+                {
+                    PickupObjectDatabase.GetByEncounterName("Verdant Blaster").PickupObjectId,
+                    339
+                };
 
+                this.IgnoreLichEyeBullets = true;
+                this.statModifiers = new List<StatModifier>(0);
+                this.bonusSynergies = new List<CustomSynergyType>();
+            }
+        }
 
+        public class PlagueDoctorSynergy : AdvancedSynergyEntry
+        {
+            public PlagueDoctorSynergy()
+            {
+                this.NameKey = "Plague Doctor";
+                this.MandatoryGunIDs = new List<int>
+                {
+                    PickupObjectDatabase.GetByEncounterName("Alchemical Gun").PickupObjectId,
+                    207
+                };
+
+                this.IgnoreLichEyeBullets = true;
+                this.statModifiers = new List<StatModifier>(0);
+                this.bonusSynergies = new List<CustomSynergyType>();
+            }
+        }
+
+        public class ControllerSynergy : AdvancedSynergyEntry
+        {
+            public ControllerSynergy()
+            {
+                this.NameKey = "Brand New Sticks";
+                this.MandatoryItemIDs = new List<int>
+                {
+                    ETGMod.Databases.Items["Mind Control Device"].PickupObjectId
+                };
+
+                this.MandatoryGunIDs = new List<int>
+                {
+                    511
+                };
+
+                this.IgnoreLichEyeBullets = true;
+                this.statModifiers = new List<StatModifier>(0);
+                this.bonusSynergies = new List<CustomSynergyType>();
+            }
+        }
+
+        public class ChickenSeerSynergy : AdvancedSynergyEntry
+        {
+            public ChickenSeerSynergy()
+            {
+                this.NameKey = "Chicken Seer";
+                this.MandatoryItemIDs = new List<int>
+                {
+                    ETGMod.Databases.Items["Crystal Ball"].PickupObjectId,
+                    ETGMod.Databases.Items["Blank Spellbook"].PickupObjectId
+                };
+
+                this.IgnoreLichEyeBullets = true;
+                this.statModifiers = new List<StatModifier>(0);
+                this.bonusSynergies = new List<CustomSynergyType>();
+            }
+        }
 
     }
 }

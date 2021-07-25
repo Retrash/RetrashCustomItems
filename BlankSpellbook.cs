@@ -105,7 +105,8 @@ namespace Blunderbeast
         private void ItemChicken(PlayerController player, PlayerItem obj)
         {
             this.InternalCooldown = 10f;
-            if (Time.realtimeSinceStartup - this.m_lastUsedTime < this.InternalCooldown)
+
+            if (Time.realtimeSinceStartup - this.m_lastUsedTime < this.InternalCooldown && !player.HasPickupID(ETGMod.Databases.Items["Crystal Ball"].PickupObjectId))
             {
                 return;
             }
@@ -121,16 +122,14 @@ namespace Blunderbeast
         private void HandleChickenEffect()
         {
             RoomHandler absoluteRoom = Owner.CurrentRoom;
-            AIActor randomActiveEnemy = absoluteRoom.GetNearestEnemy(Vector2.zero, out float nearestDistance, false, true);
-            nearestDistance = float.MaxValue;
-            if (randomActiveEnemy != null && randomActiveEnemy.healthHaver && !randomActiveEnemy.healthHaver.IsBoss && !randomActiveEnemy.IsTransmogrified)
+
+            AIActor randomActiveEnemy = absoluteRoom.GetRandomActiveEnemy(false);
+
+            if (randomActiveEnemy != null && randomActiveEnemy.IsNormalEnemy && randomActiveEnemy.healthHaver && !randomActiveEnemy.healthHaver.IsBoss)
             {
-                this.AffectEnemy(randomActiveEnemy);
+                AffectEnemy(randomActiveEnemy);
             }
-            else if (randomActiveEnemy != null && randomActiveEnemy.healthHaver && (randomActiveEnemy.IsTransmogrified || randomActiveEnemy.healthHaver.IsBoss))
-            {
-                this.HandleChickenEffect();
-            }
+
         }
 
         protected void AffectEnemy(AIActor randomActiveEnemy)

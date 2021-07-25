@@ -125,13 +125,13 @@ namespace Blunderbeast
 
         protected override void DoEffect(PlayerController user)
         {
-            user.carriedConsumables.Currency -= 25;
-            AkSoundEngine.PostEvent("Play_OBJ_Chest_Synergy_Slots_01", base.gameObject);
-            GameManager.Instance.StartCoroutine(this.GamblingTime());
             if (user.HasPickupID(476))
             {
                 LootEngine.GivePrefabToPlayer(PickupObjectDatabase.GetByName("Loot Capsule").gameObject, user);
             }
+            user.carriedConsumables.Currency -= 25;
+            AkSoundEngine.PostEvent("Play_OBJ_Chest_Synergy_Slots_01", base.gameObject);
+            GameManager.Instance.StartCoroutine(this.GamblingTime());
         }
     }
 }

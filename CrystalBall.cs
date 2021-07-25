@@ -54,19 +54,21 @@ namespace Blunderbeast
         {
             base.Pickup(player);
             GameManager.Instance.OnNewLevelFullyLoaded += this.ResetCooldown;
+            player.OnEnteredCombat += BookSynergy;
         }
 
         public DebrisObject Drop(PlayerController player)
         {
             DebrisObject debrisObject = base.Drop(player);
             GameManager.Instance.OnNewLevelFullyLoaded -= this.ResetCooldown;
+            player.OnEnteredCombat -= BookSynergy;
             return debrisObject;
         }
 
         private static Hook LifeOrbHook2 = new Hook(
-      typeof(LifeOrbGunModifier).GetMethod("ClearSoul", BindingFlags.Instance | BindingFlags.NonPublic),
-      typeof(CrystalBall).GetMethod("SoulHook")
-  );
+        typeof(LifeOrbGunModifier).GetMethod("ClearSoul", BindingFlags.Instance | BindingFlags.NonPublic),
+        typeof(CrystalBall).GetMethod("SoulHook")
+        );
 
         private static GameObject vfx, vfx2;
 
@@ -120,6 +122,14 @@ namespace Blunderbeast
         {
             AkSoundEngine.PostEvent("Play_WPN_Life_Orb_Capture_01", base.gameObject);
             RevealSecretRooms();
+        }
+
+        private void BookSynergy()
+        {
+            if (LastOwner.HasPickupID(ETGMod.Databases.Items["Blank Spellbook"].PickupObjectId))
+            {
+                ResetCooldown();
+            }
         }
 
         private void RevealSecretRooms()

@@ -131,7 +131,7 @@ namespace Blunderbeast
             this.DoMicroBlank((!obj.specRigidbody) ? obj.transform.position.XY() : obj.specRigidbody.UnitCenter);
             obj.PreventFallingInPits = true;
 
-            if (player.HasPickupID(519))
+            if (player.HasPickupID(519) || player.HasPickupID(169) || player.HasPickupID(597))
             {
                 Gun combinedRifle = Game.Items["combined_rifle"].GetComponent<Gun>();
                 Projectile projectile = combinedRifle.alternateVolley.projectiles[0].projectiles[0];
@@ -169,7 +169,7 @@ namespace Blunderbeast
         private void PostProcessProjectile(Projectile proj, float effectChanceScalar)
         {
             PlayerController player = this.Owner;
-            if (player.CurrentGun.PickupObjectId == 519)
+            if (player.CurrentGun.PickupObjectId == 519 || player.CurrentGun.PickupObjectId == 169 || player.CurrentGun.PickupObjectId == 597)
             {
                 HomingModifier projhomingModifier = proj.gameObject.AddComponent<HomingModifier>();
                 projhomingModifier.HomingRadius = 10f;

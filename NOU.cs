@@ -31,7 +31,7 @@ namespace Blunderbeast
             //Ammonomicon entry variables
             string shortDesc = "Blacklisted";
             string longDesc = "Abstract concept made literal.\n\n" +
-                "Increases the damage of every gun that does not contain the letter U in its name.";
+                "Increases the damage of every gun that does not contain the letter U in its name. Decreases bullet speed of those that do contain the letter U.";
 
             //Adds the item to the gungeon item list, the ammonomicon, the loot table, etc.
             //Do this after ItemBuilder.AddSpriteToObject!

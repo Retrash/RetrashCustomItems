@@ -125,7 +125,6 @@ namespace Blunderbeast
         {
             if (player && gun.PickupObjectId == 541 && gun.ClipShotsRemaining == 0 && CanShootNade == true)
             {
-                CanShootNade = false;
                 Projectile projectile2 = ((Gun)ETGMod.Databases.Items[19]).DefaultModule.projectiles[0];
                 Vector3 vector = player.unadjustedAimPoint - player.LockedApproximateSpriteCenter;
                 Vector3 vector2 = player.specRigidbody.UnitCenter;
@@ -135,11 +134,12 @@ namespace Blunderbeast
                 if (flag)
                 {
                     ExplosiveModifier explosive = component.GetComponent<ExplosiveModifier>();
-                    explosive.explosionData.damage *= 0.6f;
-                    component.baseData.damage *= 0.6f;
+                    explosive.explosionData.damage *= 0.8f;
+                    component.baseData.damage *= 0.8f;
                     component.Owner = player;
                     component.Shooter = player.specRigidbody;
                 }
+                CanShootNade = false;
             }
         }
 
@@ -161,17 +161,38 @@ namespace Blunderbeast
             }
 
             AkSoundEngine.PostEvent("Play_BOSS_Punchout_Swing_Right_01", base.gameObject);
-            Projectile projectile = ((Gun)ETGMod.Databases.Items[19]).DefaultModule.projectiles[0];
-            Vector3 vector = user.unadjustedAimPoint - user.LockedApproximateSpriteCenter;
-            Vector3 vector2 = user.specRigidbody.UnitCenter;
-            GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, user.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (user.CurrentGun == null) ? 0f : user.CurrentGun.CurrentAngle), true);
-            Projectile component = gameObject.GetComponent<Projectile>();
-            bool flag = component != null;
-            if (flag)
+
+            if (user.HasPickupID(39) || user.HasPickupID(398))
             {
-                component.Owner = user;
-                component.Shooter = user.specRigidbody;
+                Projectile projectile = ((Gun)ETGMod.Databases.Items[39]).DefaultModule.projectiles[0];
+                Vector3 vector = user.unadjustedAimPoint - user.LockedApproximateSpriteCenter;
+                Vector3 vector2 = user.specRigidbody.UnitCenter;
+                GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, user.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (user.CurrentGun == null) ? 0f : user.CurrentGun.CurrentAngle), true);
+                Projectile component = gameObject.GetComponent<Projectile>();
+                bool flag = component != null;
+                if (flag)
+                {
+                    component.Owner = user;
+                    component.Shooter = user.specRigidbody;
+                }
             }
+
+            else
+            {
+                Projectile projectile = ((Gun)ETGMod.Databases.Items[19]).DefaultModule.projectiles[0];
+                Vector3 vector = user.unadjustedAimPoint - user.LockedApproximateSpriteCenter;
+                Vector3 vector2 = user.specRigidbody.UnitCenter;
+                GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, user.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (user.CurrentGun == null) ? 0f : user.CurrentGun.CurrentAngle), true);
+                Projectile component = gameObject.GetComponent<Projectile>();
+                bool flag = component != null;
+                if (flag)
+                {
+                    component.Owner = user;
+                    component.Shooter = user.specRigidbody;
+                }
+            }
+
+            
         }
 
         private IEnumerator NadeCooldown()

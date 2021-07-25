@@ -164,44 +164,66 @@ namespace Blunderbeast
             if (!player.HasPickupID(264))
             {
                 player.healthHaver.ApplyDamage(0.5f, Vector2.zero, "The Infinity Guontlet", CoreDamageTypes.None, DamageCategory.Normal, true, null, false);
-                player.RemovePassiveItem(565);
                 LootEngine.GivePrefabToPlayer(PickupObjectDatabase.GetById(264).gameObject, player);
+                if (player.HasPickupID(565))
+                {
+                    player.RemovePassiveItem(565);
+                }
             }
             else if (!player.HasPickupID(270))
             {
                 player.healthHaver.ApplyDamage(0.5f, Vector2.zero, "The Infinity Guontlet", CoreDamageTypes.None, DamageCategory.Normal, true, null, false);
-                player.RemovePassiveItem(565);
                 LootEngine.GivePrefabToPlayer(PickupObjectDatabase.GetById(270).gameObject, player);
+                if (player.HasPickupID(565))
+                {
+                    player.RemovePassiveItem(565);
+                }
             }
             else if (!player.HasPickupID(262))
             {
                 player.healthHaver.ApplyDamage(0.5f, Vector2.zero, "The Infinity Guontlet", CoreDamageTypes.None, DamageCategory.Normal, true, null, false);
-                player.RemovePassiveItem(565);
                 LootEngine.GivePrefabToPlayer(PickupObjectDatabase.GetById(262).gameObject, player);
+                if (player.HasPickupID(565))
+                {
+                    player.RemovePassiveItem(565);
+                }
             }
             else if (!player.HasPickupID(269))
             {
                 player.healthHaver.ApplyDamage(0.5f, Vector2.zero, "The Infinity Guontlet", CoreDamageTypes.None, DamageCategory.Normal, true, null, false);
-                player.RemovePassiveItem(565);
                 LootEngine.GivePrefabToPlayer(PickupObjectDatabase.GetById(269).gameObject, player);
+                if (player.HasPickupID(565))
+                {
+                    player.RemovePassiveItem(565);
+                }
+
             }
             else if (!player.HasPickupID(260))
             {
                 player.healthHaver.ApplyDamage(0.5f, Vector2.zero, "The Infinity Guontlet", CoreDamageTypes.None, DamageCategory.Normal, true, null, false);
-                player.RemovePassiveItem(565);
                 LootEngine.GivePrefabToPlayer(PickupObjectDatabase.GetById(260).gameObject, player);
+                if (player.HasPickupID(565))
+                {
+                    player.RemovePassiveItem(565);
+                }
             }
             else if (!player.HasPickupID(263))
             {
                 player.healthHaver.ApplyDamage(0.5f, Vector2.zero, "The Infinity Guontlet", CoreDamageTypes.None, DamageCategory.Normal, true, null, false);
-                player.RemovePassiveItem(565);
                 LootEngine.GivePrefabToPlayer(PickupObjectDatabase.GetById(263).gameObject, player);
+                if (player.HasPickupID(565))
+                {
+                    player.RemovePassiveItem(565);
+                }
             }
             else if (!player.HasPickupID(466))
             {
                 player.healthHaver.ApplyDamage(0.5f, Vector2.zero, "The Infinity Guontlet", CoreDamageTypes.None, DamageCategory.Normal, true, null, false);
-                player.RemovePassiveItem(565);
                 LootEngine.GivePrefabToPlayer(PickupObjectDatabase.GetById(466).gameObject, player);
+                if (player.HasPickupID(565))
+                {
+                    player.RemovePassiveItem(565);
+                }
             }
         }
 

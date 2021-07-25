@@ -122,7 +122,7 @@ namespace Blunderbeast
                 AIActor aiActor = rigidbodyCollision.OtherRigidbody.aiActor;
                 if (aiActor != null && aiActor.healthHaver.CanCurrentlyBeKilled)
                 {
-                    aiActor.ApplyEffect(frostfreeze, 10f, null);
+                    aiActor.ApplyEffect(frostfreeze, 5f, null);
                 }
             }
         }       

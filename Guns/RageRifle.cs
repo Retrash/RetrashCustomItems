@@ -24,7 +24,7 @@ namespace Blunderbeast
             gun.SetAnimationFPS(gun.reloadAnimation, 4);
             Gun targetGun = PickupObjectDatabase.GetById(762) as Gun;
             gun.AddProjectileModuleFrom("klobb", true, false);
-            gun.SetBaseMaxAmmo(444);
+            gun.SetBaseMaxAmmo(666);
             RandomProjectileReplacementItem berserkPrefab = PickupObjectDatabase.GetById(524).GetComponent<RandomProjectileReplacementItem>();
             Projectile berserkProj = berserkPrefab.ReplacementProjectile;
 
@@ -39,7 +39,7 @@ namespace Blunderbeast
             gun.DefaultModule.ammoCost = 1;
             gun.DefaultModule.shootStyle = ProjectileModule.ShootStyle.Automatic;
             gun.damageModifier = 1;
-            gun.reloadTime = 1.6f;
+            gun.reloadTime = 1.5f;
             gun.DefaultModule.cooldownTime = 0.05f;
             gun.DefaultModule.numberOfShotsInClip = 22;
             gun.DefaultModule.angleVariance = 40f;

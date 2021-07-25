@@ -3,6 +3,7 @@ using ItemAPI;
 using Dungeonator;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Blunderbeast
 {
@@ -299,7 +300,7 @@ namespace Blunderbeast
             }
 
 
-            if (user.HasPickupID(489))
+            if (user.HasPickupID(489) || user.HasPickupID(198) || user.HasPickupID(528))
             {
                 Projectile projectile = ((Gun)ETGMod.Databases.Items[198]).DefaultModule.projectiles[0];
                 GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, user.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (user.CurrentGun == null) ? 0f : user.CurrentGun.CurrentAngle), true);
@@ -311,7 +312,35 @@ namespace Blunderbeast
                     component.baseData.damage *= 2f;
                 }
             }
+
+            if (user.HasPickupID(ETGMod.Databases.Items["Icy Skull"].PickupObjectId))
+            {
+                RoomHandler absoluteRoom = base.transform.position.GetAbsoluteRoom();
+                List<AIActor> activeEnemies = absoluteRoom.GetActiveEnemies(RoomHandler.ActiveEnemyType.All);
+                if (activeEnemies != null)
+                {
+                    for (int i = 0; i < activeEnemies.Count; i++)
+                    {
+                        this.FreezeAll(activeEnemies[i]);
+                    }
+                }
+            }
+
         }
+
+        protected void FreezeAll(AIActor target)
+        {
+            if (target != null)
+            {
+                if (target != null && target.healthHaver.CanCurrentlyBeKilled)
+                {
+                    BulletStatusEffectItem frostbullets = PickupObjectDatabase.GetById(278).GetComponent<BulletStatusEffectItem>();
+                    GameActorFreezeEffect frostfreeze = frostbullets.FreezeModifierEffect;
+                    target.ApplyEffect(frostfreeze, 5f, null);
+                }
+            }
+        }
+
 
         private IEnumerator SaveFlawless()
         {

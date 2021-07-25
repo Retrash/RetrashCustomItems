@@ -202,6 +202,7 @@ namespace Blunderbeast
                 }
             }
 
+
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.VeryHungrySynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.SmeltingHardSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.TheTinyAndBigSynergy() }).ToArray();
@@ -232,6 +233,7 @@ namespace Blunderbeast
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.FutureSightSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.TigerGenieSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.SoulTriggerSynergy() }).ToArray();
+            GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.IceAgeSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.GoldenRatioSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.AngerIssuesSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.AbsoluteChaosSynergy() }).ToArray();
@@ -240,15 +242,22 @@ namespace Blunderbeast
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.RockPaperCrossBow() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.BatterUpSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.ChuckingNadesSynergy() }).ToArray();
+            GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.RocketPitchSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.FreezePlusSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.FrozenCoreSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.BoneheadSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.ToolKitSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.PotceptionSynergy() }).ToArray();
             GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.AntiquatedSynergy() }).ToArray();
+            GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.DendrologySynergy() }).ToArray();
+            GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.PlagueDoctorSynergy() }).ToArray();
+            GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.ControllerSynergy() }).ToArray();
+            GameManager.Instance.SynergyManager.synergies = GameManager.Instance.SynergyManager.synergies.Concat(new AdvancedSynergyEntry[] { new CustomSynergies.ChickenSeerSynergy() }).ToArray();
+
 
             SynergyFormInitialiser.AddSynergyForms();
         }
+
 
         public static string SynergyStringHook(Func<string, int, string> action, string key, int index = -1)
         {
@@ -262,7 +271,7 @@ namespace Blunderbeast
 
         public bool isRetrashCollection;
 
-        private static string version = "4.9.2";
+        private static string version = "5.0";
 
         public override void Exit()
         {

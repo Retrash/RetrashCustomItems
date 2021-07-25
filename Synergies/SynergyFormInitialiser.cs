@@ -15,6 +15,24 @@ namespace Blunderbeast
 			AdvancedDualWieldSynergyProcessor advancedDualWieldSynergyProcessor2 = (PickupObjectDatabase.GetById(OrnatePistol.OrnatePistolID) as Gun).gameObject.AddComponent<AdvancedDualWieldSynergyProcessor>();
 			advancedDualWieldSynergyProcessor2.PartnerGunID = 9;
 			advancedDualWieldSynergyProcessor2.SynergyNameToCheck = "Antiquated";
-		}
+
+            AdvancedDualWieldSynergyProcessor advancedDualWieldSynergyProcessor3 = (PickupObjectDatabase.GetById(339) as Gun).gameObject.AddComponent<AdvancedDualWieldSynergyProcessor>();
+            advancedDualWieldSynergyProcessor3.PartnerGunID = Leafblower.LeafblowerID;
+            advancedDualWieldSynergyProcessor3.SynergyNameToCheck = "Dendrology";
+            AdvancedDualWieldSynergyProcessor advancedDualWieldSynergyProcessor4 = (PickupObjectDatabase.GetById(Leafblower.LeafblowerID) as Gun).gameObject.AddComponent<AdvancedDualWieldSynergyProcessor>();
+            advancedDualWieldSynergyProcessor4.PartnerGunID = 339;
+            advancedDualWieldSynergyProcessor4.SynergyNameToCheck = "Dendrology";
+
+            AdvancedHoveringGunSynergyProcessor PlagueDoctorSynergy = (PickupObjectDatabase.GetByEncounterName("Alchemical Gun") as Gun).gameObject.AddComponent<AdvancedHoveringGunSynergyProcessor>();
+            PlagueDoctorSynergy.ConsumesTargetGunAmmo = false;
+            PlagueDoctorSynergy.AimType = HoveringGunController.AimType.PLAYER_AIM;
+            PlagueDoctorSynergy.PositionType = HoveringGunController.HoverPosition.CIRCULATE;
+            PlagueDoctorSynergy.FireType = HoveringGunController.FireType.ON_FIRED_GUN;
+            PlagueDoctorSynergy.UsesMultipleGuns = false;
+            PlagueDoctorSynergy.TargetGunID = 207;
+            PlagueDoctorSynergy.RequiredSynergy = "Plague Doctor";
+            PlagueDoctorSynergy.FireCooldown = 0.3f;
+            PlagueDoctorSynergy.FireDuration = 0.1f;
+        }
 	}
 }

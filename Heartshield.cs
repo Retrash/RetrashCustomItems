@@ -12,10 +12,10 @@ namespace Blunderbeast
         public static void Init()
         {
             //The name of the item
-            string itemName = "Heart Shield";
+            string itemName = "Devil Shield";
 
             //Refers to an embedded png in the project. Make sure to embed your resources! Google it
-            string resourceName = "Blunderbeast/Resources/heartshield";
+            string resourceName = "Blunderbeast/Resources/devilshield";
 
             //Create new GameObject
             GameObject obj = new GameObject(itemName);
@@ -27,9 +27,9 @@ namespace Blunderbeast
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
 
             //Ammonomicon entry variables
-            string shortDesc = "Vital Aegis";
-            string longDesc = "Taking damage turns health into armor while it's wielder is healthy.\n\n" +
-                "Shield in the shape of a heart. This ancient artifact remains pristine by leeching the life of its wielder.";
+            string shortDesc = "Demonic Aegis";
+            string longDesc = "Converts available health into armor after taking damage.\n\n" +
+                "This ancient shield remains pristine by leeching the life of its wielder.";
 
             //Adds the item to the gungeon item list, the ammonomicon, the loot table, etc.
             //Do this after ItemBuilder.AddSpriteToObject!
@@ -38,7 +38,6 @@ namespace Blunderbeast
             //Adds the actual passive effect to the item
             //Set the rarity of the item
             item.quality = PickupObject.ItemQuality.C;
-            ItemBuilder.AddPassiveStatModifier(item, PlayerStats.StatType.Health, 1f, StatModifier.ModifyMethod.ADDITIVE);
         }
 
         public override void Pickup(PlayerController player)

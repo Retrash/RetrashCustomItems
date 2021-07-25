@@ -5,6 +5,7 @@ namespace Blunderbeast
 {
     public static class SynergySetup
     {
+        
         public static bool PlayerHasActiveSynergy(this PlayerController player, string synergyNameToCheck)
         {
             foreach (int num in player.ActiveExtraSynergies)
@@ -17,6 +18,10 @@ namespace Blunderbeast
                 }
             }
             return false;
+        }
+        public static bool OwnerHasSynergy(this Gun gun, string synergyName)
+        {
+            return gun.CurrentOwner is PlayerController && (gun.CurrentOwner as PlayerController).PlayerHasActiveSynergy(synergyName);
         }
 
         public static void AddPassiveStatModifier(this Gun gun, PlayerStats.StatType statType, float amount, StatModifier.ModifyMethod modifyMethod)

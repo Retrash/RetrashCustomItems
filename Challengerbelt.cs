@@ -66,15 +66,22 @@ namespace Blunderbeast
             }
             else
             {
+                ChallengeManager.ChallengeModeType = ChallengeModeType.ChallengeMegaMode;
                 challengeLevel += 1;
             }
         }
 
-        public void Break()
+        public void Break( )
         {
             this.m_pickedUp = true;
             UnityEngine.Object.Destroy(base.gameObject, 1f);
             challengeLevel -= 1;
+
+            if (challengeLevel == 0)
+            {
+                ChallengeManager.ChallengeModeType = ChallengeModeType.ChallengeMode;
+            }
+
             if (challengeLevel < 0)
             {
                 challengeLevel = 0;
@@ -105,23 +112,53 @@ namespace Blunderbeast
             header = "Bravery is rewarded";
             text = "Congratulations";
             this.Notify(header, text);
-            RoomHandler absoluteRoom = base.transform.position.GetAbsoluteRoom();
-            IntVector2? randomAvailableCell = absoluteRoom.GetRandomAvailableCell(new IntVector2?(IntVector2.One * 4), new CellTypes?(CellTypes.FLOOR), false, null);
-            IntVector2? intVector = (randomAvailableCell == null) ? null : new IntVector2?(randomAvailableCell.GetValueOrDefault() + IntVector2.One);
-            if (intVector != null)
+
+            if (GameStatsManager.Instance.IsRainbowRun)
             {
-                Chest chest = GameManager.Instance.RewardManager.SpawnRewardChestAt(intVector.Value);
-                if (chest)
+
+                RoomHandler absoluteRoom = base.transform.position.GetAbsoluteRoom();
+                IntVector2? randomAvailableCell = absoluteRoom.GetRandomAvailableCell(new IntVector2?(IntVector2.One * 4), new CellTypes?(CellTypes.FLOOR), false, null);
+                IntVector2? intVector = (randomAvailableCell == null) ? null : new IntVector2?(randomAvailableCell.GetValueOrDefault() + IntVector2.One);
+                if (intVector != null)
                 {
-                    chest.ForceUnlock();
+                    Chest chest = GameManager.Instance.RewardManager.SpawnRewardChestAt(intVector.Value);
+                    if (chest)
+                    {
+                        chest.BecomeRainbowChest();
+                        chest.ForceUnlock();
+                    }
+                }
+                else
+                {
+                    Chest chest = GameManager.Instance.RewardManager.SpawnRewardChestAt(absoluteRoom.GetBestRewardLocation(new IntVector2(3, 3), RoomHandler.RewardLocationStyle.Original, true) + IntVector2.Up);
+                    if (chest)
+                    {
+                        chest.BecomeRainbowChest();
+                        chest.ForceUnlock();
+                    }
                 }
             }
+
             else
             {
-                Chest chest = GameManager.Instance.RewardManager.SpawnRewardChestAt(absoluteRoom.GetBestRewardLocation(new IntVector2(3, 3), RoomHandler.RewardLocationStyle.Original, true) + IntVector2.Up);
-                if (chest)
+                RoomHandler absoluteRoom = base.transform.position.GetAbsoluteRoom();
+                IntVector2? randomAvailableCell = absoluteRoom.GetRandomAvailableCell(new IntVector2?(IntVector2.One * 4), new CellTypes?(CellTypes.FLOOR), false, null);
+                IntVector2? intVector = (randomAvailableCell == null) ? null : new IntVector2?(randomAvailableCell.GetValueOrDefault() + IntVector2.One);
+                if (intVector != null)
                 {
-                    chest.ForceUnlock();
+                    Chest chest = GameManager.Instance.RewardManager.SpawnRewardChestAt(intVector.Value);
+                    if (chest)
+                    {
+                        chest.ForceUnlock();
+                    }
+                }
+                else
+                {
+                    Chest chest = GameManager.Instance.RewardManager.SpawnRewardChestAt(absoluteRoom.GetBestRewardLocation(new IntVector2(3, 3), RoomHandler.RewardLocationStyle.Original, true) + IntVector2.Up);
+                    if (chest)
+                    {
+                        chest.ForceUnlock();
+                    }
                 }
             }
         }

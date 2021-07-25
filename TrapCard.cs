@@ -168,7 +168,7 @@ namespace Blunderbeast
             {
                 float value = UnityEngine.Random.Range(0.0f, 1.0f);
                 bool flag = value < 0.3;
-                if (flag || player.HasPickupID(423))
+                if (flag || player.HasPickupID(421) || player.HasPickupID(422) || player.HasPickupID(423) || player.HasPickupID(424) || player.HasPickupID(425))
                 {
                     if (enemy != null)
                     {

@@ -2,6 +2,7 @@
 using ItemAPI;
 using Dungeonator;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Blunderbeast
 {
@@ -46,7 +47,30 @@ namespace Blunderbeast
         public override void Pickup(PlayerController player)
         {
             base.Pickup(player);
+            player.PostProcessProjectile += this.PostProcessProjectile;
         }
+
+        public DebrisObject Drop(PlayerController user)
+        {
+            DebrisObject debrisObject = base.Drop(user);
+            user.PostProcessProjectile -= this.PostProcessProjectile;
+            return debrisObject;
+        }
+
+
+        private void PostProcessProjectile(Projectile sourceProjectile, float effectChanceScalar)
+        {
+            if (LastOwner.CurrentGun.PickupObjectId == 511)
+            {
+                sourceProjectile.baseData.damage *= 5f;
+            }
+
+            else
+            {
+                return;
+            }
+        }
+
 
         protected override void DoEffect(PlayerController user)
         {
@@ -56,8 +80,10 @@ namespace Blunderbeast
 
         private void HandleMindControlEffect()
         {
+
             RoomHandler absoluteRoom = base.transform.position.GetAbsoluteRoom();
             List<AIActor> activeEnemies = absoluteRoom.GetActiveEnemies(RoomHandler.ActiveEnemyType.All);
+
             if (activeEnemies != null)
             {
                 for (int i = 0; i < activeEnemies.Count; i++)
@@ -67,11 +93,40 @@ namespace Blunderbeast
             }
         }
 
+        //private void BossHelp()
+        //{
+
+        //        AIActor orLoadByGuid = EnemyDatabase.GetOrLoadByGuid("01972dee89fc4404a5c408d50007dad5");
+        //        IntVector2? intVector = new IntVector2?(this.LastOwner.CurrentRoom.GetRandomVisibleClearSpot(1, 1));
+        //        bool flag = intVector != null;
+        //        if (flag)
+        //        {
+        //            AIActor aiactor = AIActor.Spawn(orLoadByGuid.aiActor, intVector.Value, GameManager.Instance.Dungeon.data.GetAbsoluteRoomFromPosition(intVector.Value), true, AIActor.AwakenAnimationType.Default, true);
+        //            aiactor.CanTargetEnemies = true;
+        //            aiactor.CanTargetPlayers = false;
+        //            PhysicsEngine.Instance.RegisterOverlappingGhostCollisionExceptions(aiactor.specRigidbody, null, false);
+        //            aiactor.gameObject.AddComponent<KillOnRoomClear>();
+        //            aiactor.IgnoreForRoomClear = true;
+        //            aiactor.HandleReinforcementFallIntoRoom(0f);
+
+        //            if (aiactor.IsNormalEnemy && !aiactor.healthHaver.IsBoss && !aiactor.gameObject.GetComponent<MindControlEffect>())
+        //            {
+        //                MindControlEffect orAddComponent = aiactor.gameObject.GetOrAddComponent<MindControlEffect>();
+        //                orAddComponent.owner = this.LastOwner;
+        //            }
+        //        }
+        //}
+
         protected void AffectEnemy(AIActor target)
         {
             if (target != null)
             {
-                if (target.IsNormalEnemy && !target.healthHaver.IsBoss && !target.IsHarmlessEnemy && !target.gameObject.GetComponent<MindControlEffect>())
+                //if (target.healthHaver.IsBoss)
+                //{
+                //    this.BossHelp();
+                //}
+
+                if (target.IsNormalEnemy && !target.healthHaver.IsBoss && !target.gameObject.GetComponent<MindControlEffect>())
                 {
                     target.behaviorSpeculator.Stun(0.2f, true);
                     MindControlEffect orAddComponent = target.gameObject.GetOrAddComponent<MindControlEffect>();

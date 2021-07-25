@@ -27,7 +27,7 @@ namespace Blunderbeast
 
             Gun targetGun = PickupObjectDatabase.GetById(806) as Gun;
             gun.AddProjectileModuleFrom(targetGun, true, false);
-            gun.SetBaseMaxAmmo(300);
+            gun.SetBaseMaxAmmo(360);
 
             StatModifier statModifier = new StatModifier();
             statModifier.statToBoost = PlayerStats.StatType.Curse;

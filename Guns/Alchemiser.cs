@@ -31,7 +31,7 @@ namespace Blunderbeast
             gun.DefaultModule.ammoCost = 1;
             gun.DefaultModule.shootStyle = ProjectileModule.ShootStyle.SemiAutomatic;
             gun.damageModifier = 1;
-            gun.reloadTime = 1.7f;
+            gun.reloadTime = 1.3f;
             gun.barrelOffset.transform.localPosition += new Vector3(-0.1f, -0f, 0);
             gun.DefaultModule.cooldownTime = 0.2f;
             gun.DefaultModule.numberOfShotsInClip = 10;
@@ -80,6 +80,7 @@ namespace Blunderbeast
 
         private DamageTypeModifier m_poisonImmunity;
 
+
         protected void Update()
         {
             PlayerController player = gun.CurrentOwner as PlayerController;
@@ -109,6 +110,7 @@ namespace Blunderbeast
                         player.healthHaver.damageTypeModifiers.Add(this.m_poisonImmunity);
                     }
                 }
+
             }
         }
 

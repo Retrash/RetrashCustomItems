@@ -39,6 +39,7 @@
     <Compile Include="Setup\ShopTool.cs" />
     <Compile Include="BrittleArmor.cs" />
     <Compile Include="NOU.cs" />
+    <Compile Include="Synergies\AdvancedHoveringGunSynergyProcessor.cs" />
     <Compile Include="Synergies\SynergyFormInitialiser.cs" />
     <Compile Include="Synergies\SynergySetup.cs" />
     <Compile Include="Synergies\CustomSynergies.cs" />
@@ -112,9 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\glasssmelter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\heartshield.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\dodgicite.png" />
@@ -243,6 +241,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\damnedrepository.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\devilshield.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
