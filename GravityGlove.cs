@@ -66,7 +66,7 @@ namespace Blunderbeast
                 for (int i = 0; i < StaticReferenceManager.AllDebris.Count; i++)
                 {
                     DebrisObject alldebris = StaticReferenceManager.AllDebris[i];
-                    if (alldebris && alldebris.sprite.WorldCenter.GetAbsoluteRoom() == currentRoom && alldebris.IsPickupObject && alldebris.IsCorpse && alldebris.canRotate)
+                    if (alldebris && alldebris.sprite.WorldCenter.GetAbsoluteRoom() == currentRoom && alldebris.IsPickupObject && alldebris.canRotate && alldebris.sprite.IsPerpendicular && alldebris.sprite.automaticallyManagesDepth && alldebris.sprite.ignoresTiltworldDepth)
                     {
                         if (alldebris.GetComponent<PickupMover>() == null)
                         {
@@ -161,8 +161,8 @@ namespace Blunderbeast
             obj.sprite.automaticallyManagesDepth = true;
             obj.sprite.ignoresTiltworldDepth = true;
             obj.FlagAsPickup();
-            obj.IsCorpse = true;
             obj.canRotate = true;
+            obj.motionMultiplier = 0;
             obj.OnGrounded = (Action<DebrisObject>)Delegate.Remove(obj.OnGrounded, new Action<DebrisObject>(this.HandleReturnLikeBoomerang));
         }
 
@@ -187,7 +187,7 @@ namespace Blunderbeast
             homingModifier.AngularVelocity = 1000f;
             obj.pierceMinorBreakables = true;
             obj.IgnoreTileCollisionsFor(0.01f);
-            obj.OnBecameDebris = (Action<DebrisObject>)Delegate.Combine(obj.OnBecameDebrisGrounded, new Action<DebrisObject>(this.HandleReturnLikeBoomerang));
+            obj.OnBecameDebris += HandleReturnLikeBoomerang;
             obj.OnBecameDebris = (Action<DebrisObject>)Delegate.Combine(obj.OnBecameDebris, new Action<DebrisObject>(this.HandleBlankOnHit));
         }
 

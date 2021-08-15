@@ -271,7 +271,7 @@ namespace Blunderbeast
 
         public bool isRetrashCollection;
 
-        private static string version = "5.0";
+        private static string version = "5.0.1";
 
         public override void Exit()
         {

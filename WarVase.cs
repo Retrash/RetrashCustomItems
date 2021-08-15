@@ -171,7 +171,7 @@ namespace Blunderbeast
                                 }
                             }
 
-                            else if (!player.HasPickupID(7) && !player.HasPickupID(152))
+                            else if (!player.HasPickupID(7) && player.CurrentGun.PickupObjectId != 152)
                             {
                                 Vector2 unitCenter = mb.sprite.WorldCenter;
                                 Vector2 unitCenter2 = nearestEnemy.specRigidbody.HitboxPixelCollider.UnitCenter;
